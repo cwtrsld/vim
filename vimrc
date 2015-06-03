@@ -29,6 +29,10 @@ noremap <C-Y> :update<CR>
 vnoremap <C-Y> <C-C>:update<CR> 
 inoremap <C-Y> <ESC>:update<CR>
 
+" Exit insert mode
+inoremap <C-c> <esc>
+inoremap <C-c> <esc>
+
 " Quick quit command
 noremap <Leader>e :quit<CR>  " Quit current window
 noremap <Leader>E :qa!<CR>   " Quit all windows
