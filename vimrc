@@ -30,8 +30,8 @@ vnoremap <C-Y> <C-C>:update<CR>
 inoremap <C-Y> <ESC>:update<CR>
 
 " Exit insert mode
-inoremap <C-c> <esc>
-inoremap <C-c> <esc>
+inoremap jj <esc>
+inoremap jj <esc>
 
 " Quick quit command
 noremap <Leader>e :quit<CR>  " Quit current window
