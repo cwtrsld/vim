@@ -25,4 +25,6 @@
 [submodule "bundle/vim-session"]
     path = bundle/vim-session
     url = https://github.com/xolox/vim-session.gi://github.com/xolox/vim-session.git  
-
+[submodule "bundle/SingleCompile"]
+    path = bundle/SingleCompile
+    url = https://github.com/xuhdev/SingleCompile.git

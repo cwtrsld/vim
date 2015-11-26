@@ -1,17 +1,18 @@
 " Automatic reloading of .vimrc
 autocmd! bufwritepost .vimrc source %
 
-" Compile a C++ file with F5
-nnoremap <F5> :<C-U>make %:r && ./%:r<CR>
-
-" Use cppman for manpages
-autocmd FileType cpp set keywordprg=cppman
-
 " Pathogen Autoloader
 execute pathogen#infect()
 execute pathogen#helptags()
 
-" Theme settings
+" Compile files with F9 and F10
+nmap <F9> :SCCompile<cr> 
+nmap <F10> :SCCompileRun<cr> 
+
+" Use cppman for manpages
+autocmd FileType cpp set keywordprg=cppman
+
+" Theme Settings
 filetype off
 filetype plugin indent on
 syntax on
@@ -60,27 +61,27 @@ set fo-=t   " don't automatically wrap text when typing
 set colorcolumn=80
 highlight ColorColumn ctermbg=233
 
-" History settings
+" History Settings
 set history=700
 set undolevels=700
 
-" Tab settings
+" Tab Settings
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set shiftround
 set expandtab
 
-" Search settings
+" Search Settings
 set hlsearch
 set incsearch
 set ignorecase
 set smartcase
 
-" vim-powerline settings
+" vim-powerline Settings
 set laststatus=2
 
-" NERDTree settings
+" NERDTree Settings
 map <C-n> :NERDTreeToggle<CR>
 
 " Open the split at the right side
@@ -90,9 +91,9 @@ set splitbelow
 " Open help files in the right vertical split
 cnoremap help vert help
 
-" vim-sessions settings
+" vim-sessions Settings
 :let g:session_autosave = 'yes'
 :let g:session_autoload = 'yes'
 
-" clang_complete Settings
+" YouCompleteMe  Settings
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'

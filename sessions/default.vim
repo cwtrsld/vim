@@ -1,6 +1,6 @@
 " ~/.vim/sessions/default.vim:
 " Vim session script.
-" Created by session.vim 2.13.1 on 26 November 2015 at 23:07:31.
+" Created by session.vim 2.13.1 on 26 November 2015 at 23:54:30.
 " Open this file in Vim and run :source % to restore your session.
 
 if exists('g:syntax_on') != 1 | syntax on | endif
@@ -11,7 +11,7 @@ if &background != 'dark'
 	set background=dark
 endif
 if !exists('g:colors_name') || g:colors_name != 'solarized' | colorscheme solarized | endif
-call setqflist([{'lnum': 0, 'col': 0, 'valid': 0, 'vcol': 0, 'nr': -1, 'type': '', 'pattern': '', 'filename': '.vimrc', 'text': 'Hallo Welt!'}])
+call setqflist([{'lnum': 0, 'col': 0, 'valid': 1, 'vcol': 0, 'nr': -1, 'type': '', 'pattern': '', 'filename': 'Desktop/code/cpp_tutorials/.vimrc', 'text': 'Hallo Welt!'}])
 let SessionLoad = 1
 if &cp | set nocp | endif
 let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
@@ -25,11 +25,11 @@ set shortmess=aoO
 badd +48 .vimrc
 badd +1 test
 badd +1 test1
-badd +8 test.cpp
+badd +1 test.cpp
 argglobal
 silent! argdel *
 argadd .vimrc
-edit test.cpp
+edit .vimrc
 set splitbelow splitright
 wincmd t
 set winheight=1 winwidth=1
@@ -43,11 +43,11 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 9 - ((8 * winheight(0) + 17) / 34)
+let s:l = 1 - ((0 * winheight(0) + 17) / 34)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-9
+1
 normal! 0
 tabnext 1
 if exists('s:wipebuf')
