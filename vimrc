@@ -1,6 +1,12 @@
 " Automatic reloading of .vimrc
 autocmd! bufwritepost .vimrc source %
 
+" Compile a C++ file with F5
+nnoremap <F5> :<C-U>make %:r && ./%:r<CR>
+
+" Use cppman for manpages
+autocmd FileType cpp set keywordprg=cppman
+
 " Pathogen Autoloader
 execute pathogen#infect()
 execute pathogen#helptags()
@@ -24,11 +30,6 @@ set bs=2     " make backspace behave like normal again
 " Rebind <Leader> key
 let mapleader = ","
 
-" Quicksave command
-noremap <C-Y> :update<CR> 
-vnoremap <C-Y> <C-C>:update<CR> 
-inoremap <C-Y> <ESC>:update<CR>
-
 " Exit insert mode
 inoremap jj <esc>
 inoremap jj <esc>
@@ -37,7 +38,7 @@ inoremap jj <esc>
 noremap <Leader>e :quit<CR>  " Quit current window
 noremap <Leader>E :qa!<CR>   " Quit all windows
 
-" Window movement commands
+" Window (split) movement commands
 map <c-j> <c-w>j
 map <c-k> <c-w>k
 map <c-l> <c-w>l
@@ -46,9 +47,6 @@ map <c-h> <c-w>h
 " Tab movement commands
 map <Leader>n <esc>:tabprevious<CR>
 map <Leader>m <esc>:tabnext<CR>
-
-" Map sort function
-vnoremap <Leader>s :sort<CR>
 
 " Moving of code blocks
 vnoremap < <gv  " better indentation
@@ -82,38 +80,19 @@ set smartcase
 " vim-powerline settings
 set laststatus=2
 
-" ctrlp settings
-let g:ctrlp_max_height = 30
-set wildignore+=*.pyc
-set wildignore+=*_build/*
-set wildignore+=*/coverage/*
+" NERDTree settings
+map <C-n> :NERDTreeToggle<CR>
 
-" python-mode settings
-let ropevim_enable_shortcuts = 1
-let g:pymode_rope_goto_definition_bind = "<Leader>g"
-let g:pymode_rope_goto_definition_cmd = "vnew"
-let g:pymode_rope_extended_complete = 1
-let g:pymode_breakpoint = 0
-let g:pymode_syntax = 1
-let g:pymode_syntax_builtin_objs = 0
-let g:pymode_syntax_builtin_funcs = 0
-map <Leader>b Oimport ipdb; ipdb.set_trace() # BREAKPOINT<C-c>
+" Open the split at the right side
+set splitright
+set splitbelow
 
-" Navigation through omnicomplete option list
-set completeopt=longest,menuone
-function! OmniPopup(action)
-    if pumvisible()
-        if a:action = 'j'
-            return "\<C-N>"
-        elseif a:action == 'k'
-            return "\<C-P>"
-        endif
-    endif
-    return a:action
-endfunction
+" Open help files in the right vertical split
+cnoremap help vert help
 
-inoremap <silent><C-j> <C-R>=OmniPopup('j')<CR>
-inoremap <silent><C-k> <C-R>=OmniPopup('k')<CR>
+" vim-sessions settings
+:let g:session_autosave = 'yes'
+:let g:session_autoload = 'yes'
 
-" Python folding
-set nofoldenable
+" clang_complete Settings
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
