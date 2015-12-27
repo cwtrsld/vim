@@ -1,6 +1,6 @@
 " ~/.vim/sessions/cpp.vim:
 " Vim session script.
-" Created by session.vim 2.13.1 on 26 November 2015 at 23:51:47.
+" Created by session.vim 2.13.1 on 19 December 2015 at 20:04:24.
 " Open this file in Vim and run :source % to restore your session.
 
 if exists('g:syntax_on') != 1 | syntax on | endif
@@ -22,16 +22,21 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +5 listing_2_1.cpp
-badd +8 listing_1_1.cpp
-badd +1 listing
-badd +4 listing_2_1
-badd +1 listing_2_2.cpp
-badd +1 listing_2_2
+badd +9 listing_2_3.cpp
+badd +6 listing_1_1.cpp
+badd +7 listing_2_1.cpp
+badd +1 listing_2_4.cpp
+badd +7 listing_2_5.cpp
+badd +1 listing_2_6.cpp
+badd +5 listing_2_7.cpp
+badd +4 listing_2_8.cpp
+badd +0 listing_3_1.cpp
+badd +0 listing_3_2.cpp
+badd +0 listing_3_2
 argglobal
 silent! argdel *
-argadd listing_1_1.cpp
-edit listing_2_2.cpp
+argadd listing_2_3.cpp
+edit listing_3_1.cpp
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
@@ -51,15 +56,16 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 5 - ((4 * winheight(0) + 17) / 34)
+let s:l = 3 - ((2 * winheight(0) + 17) / 34)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-5
+3
 normal! 0
+lcd ~/Desktop/code/cpp_tutorials
 wincmd w
 argglobal
-edit listing_2_1.cpp
+edit ~/Desktop/code/cpp_tutorials/listing_3_2.cpp
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -69,11 +75,11 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 6 - ((5 * winheight(0) + 17) / 34)
+let s:l = 1 - ((0 * winheight(0) + 17) / 34)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-6
+1
 normal! 0
 lcd ~/Desktop/code/cpp_tutorials
 wincmd w
