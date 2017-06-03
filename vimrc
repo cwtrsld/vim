@@ -1,93 +1,76 @@
 " Automatic reloading of .vimrc
 autocmd! bufwritepost .vimrc source %
 
-" Pathogen autoloader
-execute pathogen#infect()
-execute pathogen#helptags()
+" Vundle packet manager
+" Set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-" Compile files with F9 and F10
-nmap <F9> :SCCompile<cr> 
-nmap <F10> :SCCompileRun<cr> 
+" Let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'Lokaltog/vim-powerline'
+Plugin 'kien/ctrlp.vim'
+Plugin 'scroolose/nerdcommenter'
+Plugin 'scroolose/nerdtree'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-session'
+
+" All of your Plugins must be added before the following line
+call vundle#end()  
 
 " Theme settings
-filetype off
-filetype plugin indent on
-syntax on
-syntax enable
-set background=dark
-colorscheme solarized
-
-" Better copy & paste
-set pastetoggle=<F2>
-set clipboard=unnamed
+filetype off                                                    " Needed for vundle
+filetype plugin indent on                                       " Needed for vundle
+syntax on                                                       " Enable syntax highlighting
+syntax enable                                                   " Enable syntax highlighting
+set background=dark                                             " Set background color
+colorscheme solarized                                           " Set colorscheme
+set number                                                      " Show line numbers
+set tw=79                                                       " Width of document (used by gd)
+set nowrap                                                      " Don't automatically wrap on load
+set fo-=t                                                       " Don't automatically wrap text when typing
+set colorcolumn=100                                             " Second color after x signs
+highlight ColorColumn ctermbg=233                               " Color after the first colum color
+set tabstop=4                                                   " Set the tab stop set
+set softtabstop=4                                               " Set the tab stops used in insert mode
+set shiftwidth=4                                                " Number of spaces to use for autoindenting
+set shiftround                                                  " Use multiple of shiftwidth when indenting with '<' and '>'
+set expandtab                                                   " Use tabs instead of spaces
+set splitright                                                  " Opens a vertical split on the right
+set splitbelow                                                  " Opens a horizontal split below
+cnoremap help vert help                                         " Opens the help window vertical
     
-" Mouse and backspace
-set mouse=a  " on OSX press ALT and click
-set bs=2     " make backspace behave like normal again
-
-" Rebind <Leader> key
-let mapleader = ","
-
-" Exit insert mode
-inoremap jj <esc>
-inoremap jj <esc>
-
-" Quick quit command
-noremap <Leader>e :quit<CR>  " Quit current window
-noremap <Leader>E :qa!<CR>   " Quit all windows
-
-" Window (split) movement commands
-map <c-j> <c-w>j
-map <c-k> <c-w>k
-map <c-l> <c-w>l
-map <c-h> <c-w>h
-
-" Tab movement commands
-map <Leader>n <esc>:tabprevious<CR>
-map <Leader>m <esc>:tabnext<CR>
-
-" Moving of code blocks
-vnoremap < <gv  " better indentation
-vnoremap > >gv  " better indentation
-
-" Show line numbers and length
-set number  " show line numbers
-set tw=79   " width of document (used by gd)
-set nowrap  " don't automatically wrap on load
-set fo-=t   " don't automatically wrap text when typing
-set colorcolumn=80
-highlight ColorColumn ctermbg=233
-
-" History settings
-set history=700
-set undolevels=700
-
-" Tab settings
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set shiftround
-set expandtab
+" Navigation settings
+set mouse=a                                                     " On OSX press ALT and click
+set bs=2                                                        " Make backspace great again
+let mapleader = ","                                             " Rebind <Leader> key
+inoremap jj <esc>                                               " Exit insert mode
+noremap <Leader>e :quit<CR>                                     " Quit current window
+noremap <Leader>E :qa!<CR>                                      " Quit all windows
+map <c-j> <c-w>j                                                " Go to the lower window
+map <c-k> <c-w>k                                                " Go to the upper window
+map <c-l> <c-w>l                                                " Go to the right window
+map <c-h> <c-w>h                                                " Go to the left window
+map <Leader>n <esc>:tabprevious<CR>                             " Go to the previous tab
+map <Leader>m <esc>:tabnext<CR>                                 " Go to the next tab
+vnoremap < <gv                                                  " Better reverse indentation
+vnoremap > >gv                                                  " Better indentation
+set history=700                                                 " Set how much history is saved
+set undolevels=700                                              " Set how much steps you can undo
 
 " Search settings
-set hlsearch
-set incsearch
-set ignorecase
-set smartcase
+set hlsearch                                                    " Highlight search pattern
+set incsearch                                                   " Improved incremental search
+set ignorecase                                                  " Search case insensitive
+set smartcase                                                   " Use  case if any caps used
 
-" vim-powerline settings
-set laststatus=2
-
-" NERDTree settings
-map <C-n> :NERDTreeToggle<CR>
-
-" Open the split at the right side
-set splitright
-set splitbelow
-
-" Open help files in the right vertical split
-cnoremap help vert help
-
-" vim-sessions settings
-:let g:session_autosave = 'yes'
-:let g:session_autoload = 'yes'
+" Plugin settings
+set laststatus=2                                                " show vim-powerline last status
+map <C-n> :NERDTreeToggle<CR>                                   " toggle nerdtree
+let g:session_autosave = 'yes'                                  " autosave vim-sessions
+let g:session_autoload = 'yes'                                  " autoload vim-sessions
+let g:ycm_autoclose_preview_window_after_completion = 1 
+let g:ycm_autoclose_preview_window_after_insertion = 1          " YouCompleteMe
+let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"   " YouCompleteMe
