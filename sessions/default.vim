@@ -1,6 +1,6 @@
 " ~/.vim/sessions/default.vim:
 " Vim session script.
-" Created by session.vim 2.13.1 on 03 June 2017 at 22:07:35.
+" Created by session.vim 2.13.1 on 30 August 2018 at 20:27:02.
 " Open this file in Vim and run :source % to restore your session.
 
 if exists('g:syntax_on') != 1 | syntax on | endif
@@ -17,26 +17,19 @@ if &cp | set nocp | endif
 let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
 let v:this_session=expand("<sfile>:p")
 silent only
-cd ~/.vim/bundle
+cd ~/.vim
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +9 listing_2_3.cpp
-badd +6 listing_1_1.cpp
-badd +7 listing_2_1.cpp
-badd +1 listing_2_4.cpp
-badd +7 listing_2_5.cpp
-badd +1 listing_2_6.cpp
-badd +1 listing_2_7.cpp
-badd +7 listing_2_8.cpp
+badd +0 vimrc
 argglobal
 silent! argdel *
-argadd listing_2_3.cpp
-edit listing_2_7.cpp
+$argadd vimrc
+edit vimrc
 set splitbelow splitright
 wincmd t
-set winheight=1 winwidth=1
+set winminheight=1 winheight=1 winminwidth=1 winwidth=1
 argglobal
 setlocal fdm=manual
 setlocal fde=0
@@ -47,18 +40,19 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 19) / 38)
+let s:l = 76 - ((22 * winheight(0) + 11) / 23)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-1
+76
 normal! 0
 tabnext 1
-if exists('s:wipebuf')
+if exists('s:wipebuf') && s:wipebuf != bufnr('%')
 "   silent exe 'bwipe ' . s:wipebuf
 endif
 " unlet! s:wipebuf
 set winheight=1 winwidth=20 shortmess=filnxtToOc
+set winminheight=1 winminwidth=1
 let s:sx = expand("<sfile>:p:r")."x.vim"
 if file_readable(s:sx)
   exe "source " . fnameescape(s:sx)
