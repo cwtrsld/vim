@@ -8,7 +8,6 @@ call vundle#begin()
 
 " Let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'Lokaltog/vim-powerline'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scroolose/nerdcommenter'
@@ -69,8 +68,3 @@ set smartcase                                                   " Use  case if a
 " Plugin settings
 set laststatus=2                                                " show vim-powerline last status
 map <C-n> :NERDTreeToggle<CR>                                   " toggle nerdtree
-let g:session_autosave = 'yes'                                  " autosave vim-sessions
-let g:session_autoload = 'yes'                                  " autoload vim-sessions
-let g:ycm_autoclose_preview_window_after_completion = 1 
-let g:ycm_autoclose_preview_window_after_insertion = 1          " YouCompleteMe
-let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"   " YouCompleteMe
